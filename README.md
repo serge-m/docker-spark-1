@@ -51,3 +51,13 @@ sudo docker daemon
 # Build this image
 ./build-image.sh
 ```
+
+# Testing
+
+If you want to test your new cluster, you can use
+
+```
+sh ./tests/pytest.sh
+```
+
+It connects to the default docker IP.
