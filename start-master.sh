@@ -1,2 +1,13 @@
 #!/usr/bin/env bash
-docker run -i -d -t -p 23080:8080 -p 23040:4040 -p 23077:7077 --name sparkMaster samuelsmal/docker-ubuntu-spark:0.1 /home/root/start-master.sh "$@"
+docker run \
+  -i \
+  -d \
+  -t \
+  --net spark_nw \
+  -p 8080:8080 \
+  -p 4040:4040 \
+  -p 7077:7077 \
+  --name master \
+  samuelsmal/docker-ubuntu-spark:0.1 \
+  /usr/bin/supervisord --configuration=/opt/conf/master.conf
+
