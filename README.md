@@ -6,7 +6,16 @@ the master node will be in interactive mode (started with `-i` flag).
 For now the network creation and the creation of the worker nodes is done
 manually, something that I plan to automate using Docker compose.
 
-You might want to adjust the ports depending on your setup.
+You might want to adjust the ports depending on your setup. The are currently prefixed with `3`:
+
+```
+# in start-master.sh
+  -p 38080:8080 \
+  -p 34040:4040 \
+  -p 37077:7077 \
+```
+
+Internally the ports are the default ones.
 
 # Building the Docker image
 
@@ -23,6 +32,9 @@ sudo docker daemon
 # Build this image
 ./build-image.sh
 ```
+
+Note that the version depends on git and the current status. Commit your
+changes before building, or leave it dirty on all times...
 
 # How to start the cluster
 
@@ -45,7 +57,8 @@ If you want to test your new cluster, you can use
 ./tests/pytest.sh
 ```
 
-It connects to the default docker IP.
+Make sure that you installed Spark locally as well, and that the `SPARK_HOME`
+environment flag is set correctly.
 
 # Credit
 

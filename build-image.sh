@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker build -t samuelsmal/docker-ubuntu-spark:0.1 .
+docker build -t samuelsmal/docker-ubuntu-spark:$(git describe --tags --dirty) .
