@@ -60,6 +60,9 @@ If you want to test your new cluster, you can use
 Make sure that you installed Spark locally as well, and that the `SPARK_HOME`
 environment flag is set correctly.
 
+You might want to adapt the path of the to-be committed jar file, depending on
+your Spark environment (I build it myself).
+
 # Credit
 
 Thanks to:
