@@ -12,7 +12,8 @@ RUN apt-get install -y \
   tmux \
   less \
   iputils-ping \
-  supervisor
+  supervisor \
+  acl
 
 WORKDIR /opt/
 
@@ -34,3 +35,16 @@ ENV SPARK_WORKER_PORT 8888
 ENV SPARK_WORKER_WEBUI_PORT 8081
 
 EXPOSE 8080 7077 8888 8081 4040 7001 7002 7003 7004 7005 7006
+
+RUN groupadd -r contovista -g 1999 && useradd -r -g contovista sparkuser
+RUN mkdir /data && \
+    chgrp contovista /data && \
+    chmod g+s /data && \
+    setfacl -d -m g::rwx /data && \
+    chown -R sparkuser:contovista /opt/spark && \
+    chown -R sparkuser:contovista /opt/spark-1.6.1-bin-hadoop2.6 && \
+    mkdir -p /home/sparkuser && \
+    chown sparkuser:contovista /home/sparkuser
+
+WORKDIR /home/sparkuser/
+USER sparkuser

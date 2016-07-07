@@ -7,6 +7,7 @@ docker run \
   -p 38080:8080 \
   -p 34040:4040 \
   -p 37077:7077 \
+  -v $(pwd)/data:$(pwd)/data \
   --name sparkMaster \
   --hostname sparkMaster \
   samuelsmal/docker-ubuntu-spark:$(git describe --tags --dirty) \

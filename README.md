@@ -63,6 +63,35 @@ environment flag is set correctly.
 You might want to adapt the path of the to-be committed jar file, depending on
 your Spark environment (I build it myself).
 
+## Testing disk IO
+
+First prepare the necessary files with
+
+    make simple-test
+    make prepare-data
+
+Then run the io test with
+
+    ./test/iotest.sh
+
+# Memory
+
+By default, Spark uses all available cores and all the available memory. Just
+like a docker image will do as well. So if you start two docker workers on a
+host with 8 cores, each one of them will have 8 cores available. And if the
+host has 64G memory, the workers will have both somethings in the similar
+range. This can be changed in `conf/slave.conf` using the `-c` flag. The same
+is valid for the memory, which can be set with the `-m` flag.
+
+When submitting an application, the memory it takes per executor must be 
+specified by `spark.executor.memory` in the configuration/application itself or 
+by the `--executor-memory` flag.
+
+# Disk IO
+
+See discussion  
+[https://www.mail-archive.com/user@spark.apache.org/msg28820.html](here).
+
 # Credit
 
 Thanks to:
