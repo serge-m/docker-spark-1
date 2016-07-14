@@ -2,9 +2,9 @@ FROM ubuntu:16.04
 
 MAINTAINER Samuel von Baussnern <samuel.vonbaussnern@gmail.com>
 
-RUN apt-get -y update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes software-properties-common python-software-properties
-RUN apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && apt-get install -y --force-yes software-properties-common python-software-properties
+RUN apt-get -y update && \
+  apt-get install -y \
   openjdk-8-jdk \
   openjdk-8-jre \
   wget \
@@ -13,7 +13,8 @@ RUN apt-get install -y \
   less \
   iputils-ping \
   supervisor \
-  acl
+  acl \
+  r-base
 
 WORKDIR /opt/
 
