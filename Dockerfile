@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER Samuel von Baussnern <samuel.vonbaussnern@gmail.com>
+MAINTAINER sergem <sbmatyunin@gmail.com>
 
 RUN apt-get -y update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes software-properties-common python-software-properties
@@ -12,15 +12,15 @@ RUN apt-get install -y \
   tmux \
   less \
   iputils-ping \
-  supervisor
+  supervisor \
+  mc
 
 WORKDIR /opt/
 
-RUN wget http://mirror.switch.ch/mirror/apache/dist/spark/spark-1.6.1/spark-1.6.1-bin-hadoop2.6.tgz -O - \
-  | tar -xvz -C /opt/ && \
-  ln -s /opt/spark-1.6.1-bin-hadoop2.6 /opt/spark
 
-#COPY scripts/ /opt/
+COPY setup_scripts/ /opt/
+RUN /opt/setup_scripts/download_spark.sh
+
 COPY conf/ /opt/conf/
 
 ENV SPARK_HOME /opt/spark

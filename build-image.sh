@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker build -t samuelsmal/docker-ubuntu-spark:$(git describe --tags --dirty) .
+docker build -t sergem/docker-ubuntu-spark:$(git rev-parse --short HEAD) .

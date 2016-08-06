@@ -2,6 +2,6 @@
 docker run \
   -d \
   --net spark_nw \
-  samuelsmal/docker-ubuntu-spark:$(git describe --tags --dirty) \
+  sergem/docker-ubuntu-spark:$(git rev-parse --short HEAD) \
   /usr/bin/supervisord --configuration=/opt/conf/slave.conf
 

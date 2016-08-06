@@ -9,6 +9,6 @@ docker run \
   -p 37077:7077 \
   --name sparkMaster \
   --hostname sparkMaster \
-  samuelsmal/docker-ubuntu-spark:$(git describe --tags --dirty) \
+  sergem/docker-ubuntu-spark:$(git rev-parse --short HEAD) \
   /usr/bin/supervisord --configuration=/opt/conf/master.conf
 
