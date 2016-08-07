@@ -17,8 +17,7 @@ RUN apt-get install -y \
 
 WORKDIR /opt/
 
-
-COPY setup_scripts/ /opt/
+COPY setup_scripts/ /opt/setup_scripts/
 RUN /opt/setup_scripts/download_spark.sh
 
 COPY conf/ /opt/conf/
