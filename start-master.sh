@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 docker run \
-  -i \
-  -d \
-  -t \
+  -i -d -t \
   --net spark_nw \
   -p 38080:8080 \
   -p 34040:4040 \
